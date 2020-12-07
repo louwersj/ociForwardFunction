@@ -12,12 +12,12 @@ To be able to configure the integration you will need some information from Azur
 When data is send to Azure you can retrieve the data in your Azure workspace. It has to be noted that, after an event is posted to the Azure API it takes Azure at the moment around two minutes to process data in the background before it is shown in your workspace. The data that is provided to Azure will be stored in a custom log named after the value for custom_log_name which you configured in OCI for this function. Azure will append CL after the name configure in custom_log_name. The below example shows a custom log configured as ociEventTest1 as a custom log in your Azure workspace.
 
 ![](../doc/Azure_sentinel_Oracle_Cloud_3.png)
-*Custom log with Oracle CLoud Events*
+*Custom log with Oracle Cloud Events*
 
 Retrieving and viewing OCI Cloud Events from Oracle Cloud in an Azure workspace can be done by creating a query in Azure and/or using any of the native Azure ways of retrieving data stored in a specific workspace. The below screenshot shows a simple retrievale query. The data shown in the screenshot is data based upon the [test data JSON file](../testdata/example_0.json) which is part of this github Repository.
 
 ![](../doc/Azure_sentinel_Oracle_Cloud_1.png)
-*Query azure for Oracle Cloud Events*
+*Query Microsoft Azure for Oracle Cloud Events*
 
 
 ## Additional information
