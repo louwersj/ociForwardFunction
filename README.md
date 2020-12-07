@@ -18,3 +18,4 @@ Sending OCI logging to Micorsoft Azure Sentinel for inclusion in a Azure Sentine
 * [OCI serverless Functions](https://docs.cloud.oracle.com/en-us/iaas/Content/Functions/Concepts/functionsoverview.htm)
 * [OCI cloudevents](https://docs.cloud.oracle.com/en-us/iaas/Content/Events/Concepts/eventsoverview.htm)
 * [Cloudevents standard](https://cloudevents.io/)
+* [Microsoft Azure Sentinel](https://docs.microsoft.com/en-us/azure/sentinel/overview)
