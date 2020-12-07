@@ -1,0 +1,19 @@
+{
+  "eventType": "com.oraclecloud.functions.updatefunction",
+  "cloudEventsVersion": "0.1",
+  "eventTypeVersion": "2.0",
+  "source": "functions",
+  "eventTime": "2019-07-22T09:33:44.754Z",
+  "contentType": "application/json",
+  "data": {
+    "compartmentId": "ocid1.compartment.oc1..unique_ID",
+    "compartmentName": "example_compartment",
+    "resourceName": "example_resource",
+    "resourceId": "ocid1.fnfunc.oc1.phx.unique_ID",
+    "availabilityDomain": "availability_domain"
+  },
+  "eventID": "unique_ID",
+  "extensions": {
+    "compartmentId": "ocid1.compartment.oc1..unique_ID"
+  }
+}
