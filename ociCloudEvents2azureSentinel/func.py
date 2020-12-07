@@ -75,15 +75,10 @@ def handler(ctx, data: io.BytesIO = None):
         # push a dict into requests.post it will fail.
         azurePayLoad = json.dumps(receivedCloudEvent)
 
-        #method = azureApiMethod
         azureApiMethod = 'POST'
-        #content_type = azureApiContentType
         azureApiContentType = 'application/json'
-        #resource = azureApiResource
         azureApiResource = '/api/logs'
         rfc1123date = datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
-        #body = receivedCloudEvent
-        #content_length = len(receivedCloudEvent)
         content_length = len(azurePayLoad)
 
         signature = build_signature(azureCustomerId, azureSharedKey, rfc1123date, content_length, azureApiMethod, azureApiContentType, azureApiResource)
@@ -97,8 +92,6 @@ def handler(ctx, data: io.BytesIO = None):
             'x-ms-date': rfc1123date
         }
 
-
-
         # try to call the Azure Sentinel API endpoint and store the result in azureApiResponse. If this fails we fail
         # the entire function.
         try:
@@ -110,68 +103,6 @@ def handler(ctx, data: io.BytesIO = None):
             funcFailure = True
             funcFailureMessage = ("Forward Function Internal error: {}".format(e))
             pass
-
-        '''
-        # Check the azureApiResponse code, taking into account the value of funcFailure. If the function has failed in an
-        # step before there is no need to do this check.
-        if funcFailure:
-            funcFailure = True
-        else:
-            # if response status code from the Azure API is between 200 and 299 we can assume the message has been received
-            # on the azure side and we can assume the sharing of the payload has been a success.
-            if (azureApiResponse.status_code >= 200 and azureApiResponse.status_code <= 299):
-                print('Accepted')
-
-            # if the response status code from Azure is 400 it is a bad request. Refer to the Azure api documentation for
-            # details. Refer to the Azure api documentation for details. We do raise an error and place the message in the
-            # retry queue to be attempted again
-            elif (azureApiResponse.status_code == 400):
-                funcFailure = True
-                funcFailureMessage = ("Microsoft Azure API ERROR response code: {}".format(azureApiResponse.status_code)
-
-             # if the response status code from Azure is 403 the service failed to authenticate the request. Verify that
-             # the workspace ID and connection key are valid. Refer to the Azure api documentation for details. We do raise
-             # an error and place the message in the retry queue to be attempted again
-            elif (azureApiResponse.status_code == 403):
-                funcFailure = True
-                funcFailureMessage = ("Microsoft Azure API ERROR response code: {}".format(azureApiResponse.status_code)
-
-            # if the response status code from Azure is 404 either the URL provided is incorrect, or the request is too
-            # large. Refer to the Azure api documentation for details. We do raise an error and place the message in the
-            # retry queue to be attempted again
-            elif (azureApiResponse.status_code == 404):
-                funcFailure = True
-                funcFailureMessage = ("Microsoft Azure API ERROR response code: {}".format(azureApiResponse.status_code)
-
-            # if the response status code from Azure is 429 the service is experiencing a high volume of data from your
-            # account. Please retry the request later. Refer to the Azure api documentation for details. We do raise an
-            # error and place the message in the retry queue to be attempted again
-            elif (azureApiResponse.status_code == 429):
-                funcFailure = True
-                funcFailureMessage = ("Microsoft Azure API ERROR response code: {}".format(azureApiResponse.status_code)
-
-            # if the response status code from Azure is 500 the service encountered an internal error. Please retry the
-            # request. Refer to the Azure api documentation for details. We do raise an error and place the message in the
-            # retry queue to be attempted again
-            elif (azureApiResponse.status_code == 500):
-                funcFailure = True
-                funcFailureMessage = ("Microsoft Azure API ERROR response code: {}".format(azureApiResponse.status_code)
-
-            # if the response status code from Azure is 503 the service currently is unavailable to receive requests. Please
-            # retry your request. Refer to the Azure api documentation for details. We do raise an error and place the
-            # message in the retry queue to be attempted again
-            elif (azureApiResponse.status_code == 503):
-                funcFailure = True
-                funcFailureMessage = ("Microsoft Azure API ERROR response code: {}".format(azureApiResponse.status_code)
-
-            # in case any other response code is returned this is an undocumented return code from Azure. As it is not a 200
-            # code indicating the request was successful we have to assume something went wrong, however it is a unknown
-            # error and not documented by Azure. We do raise an error and place the message in the retry queue to be
-            # attempted again
-            else:
-                funcFailure = True
-                funcFailureMessage = ("Microsoft Azure API ERROR response code: {}".format(azureApiResponse.status_code)
-        '''
 
     # define the right response message to be send to the caller, taking into account the value of funcFailure. This
     # value will be set to True in case a catched error has been encountered
