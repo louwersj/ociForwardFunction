@@ -13,6 +13,10 @@ Within Oracle Cloud the details retrieved from Azure needs to be added to the co
 ![](../doc/Azure_sentinel_Oracle_Cloud_4.png)
 *Oracle Cloud function configuration*
 
+custom_log_name = The name of the custom log you want to upload the OCI Cloud Events towards
+customer_id = The Azure Workspace ID
+shared_key = The Azure workspace primary key or the Azure workspace secondary key
+
 ## Viewing OCI events in Azure
 When data is send to Azure you can retrieve the data in your Azure workspace. It has to be noted that, after an event is posted to the Azure API it takes Azure at the moment around two minutes to process data in the background before it is shown in your workspace. The data that is provided to Azure will be stored in a custom log named after the value for custom_log_name which you configured in OCI for this function. Azure will append CL after the name configure in custom_log_name. The below example shows a custom log configured as ociEventTest1 as a custom log in your Azure workspace.
 
