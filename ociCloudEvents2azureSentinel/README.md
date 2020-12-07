@@ -1,5 +1,5 @@
 # OCI Cloud Events towards MS Azure Sentinel
-The ociCloudEvents2azureSentinel integration function is used to integrate Oracle Cloud and Microsft Azure Sentinel by leveraging the Azure HTTP Data Collector API to send log data to Azure Monitor from a REST API client. It has to be noted that, after an event is posted to the Azure API it takes Azure at the moment around two minutes to process data in the background before it is shown in your workspace. 
+The ociCloudEvents2azureSentinel integration function is part of the OCI Forward Functions Project project and is used to integrate Oracle Cloud and Microsoft Azure Sentinel by leveraging the Azure HTTP Data Collector API to send log data to Azure Monitor from a REST API client. It has to be noted that, after an event is posted to the Azure API it takes Azure at the moment around two minutes to process data in the background before it is shown in your workspace. 
 
 ## Deployment
 The deployment of this specific function is a standard deployment which is described in the deployment section of the standard documentation for this project. No deviations from the standard apply for this. 
