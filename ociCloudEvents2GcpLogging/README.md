@@ -1,1 +1,1 @@
-# ociCloudEvents2GcpLogging
+# OCI Cloud Events towards Google Cloud Platform Logging
