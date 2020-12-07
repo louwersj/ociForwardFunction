@@ -8,6 +8,11 @@ To be able to configure the integration you will need some information from Azur
 ![](../doc/Azure_sentinel_Oracle_Cloud_2.png)
 *Aquire Azure details for Oracle Cloud Configuration*
 
+Within Oracle Cloud the details retrieved from Azure needs to be added to the configuration of the specific function. When opening the ociCloudEvents2azureSentinel details in the Oracle Cloud UI you can find the default parameters that need to be configured
+
+![](../doc/Azure_sentinel_Oracle_Cloud_4.png)
+*Oracle Cloud function configuration*
+
 ## Viewing OCI events in Azure
 When data is send to Azure you can retrieve the data in your Azure workspace. It has to be noted that, after an event is posted to the Azure API it takes Azure at the moment around two minutes to process data in the background before it is shown in your workspace. The data that is provided to Azure will be stored in a custom log named after the value for custom_log_name which you configured in OCI for this function. Azure will append CL after the name configure in custom_log_name. The below example shows a custom log configured as ociEventTest1 as a custom log in your Azure workspace.
 
