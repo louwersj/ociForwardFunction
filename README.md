@@ -19,8 +19,15 @@ Sending OCI logging to Micorsoft Azure Sentinel for inclusion in a Azure Sentine
 *Tested = No, Operational = No*
 
 ## Deployment and configuration
+For the full working of functions provided by the ociForwardFunction project it is requried that the functions will be deployed and configured and that (for the event and logging functions) the correct configuration is done to ensure that the logging and event information is send to the functions to trigger them and invoke the logic in the functions that will ensure the ingration to a third party system. The below sub-sections provide guidance for this. 
 
 ### Generic Function Deployment
+The ociForwardFunction project consists out of pure OCI functions (based upon Fn Project - the container native serverless framework). Due to this deployment of the functions towards Oracle Cloud will follow the standard deployment model as for any function deployment in OCI. 
+
+To ensure a basic understanding of how to configure / prepare OCI for function deployments please do refer to the following documentation:
+* [Creating and Deploying Functions](https://docs.cloud.oracle.com/en-us/iaas/Content/Functions/Tasks/functionsuploading.htm)
+* [Configuring Your Tenancy for Function Development](https://docs.cloud.oracle.com/en-us/iaas/Content/Functions/Tasks/functionsuploading.htm)
+* [Configuring Your Client Environment for Function Development](https://docs.cloud.oracle.com/en-us/iaas/Content/Functions/Tasks/functionsconfiguringclient.htm#Configuring_Your_Client_Environment_for_Function_Development)
 
 ### Generic Function Configuration
 
