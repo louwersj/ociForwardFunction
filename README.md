@@ -1,6 +1,8 @@
-# ociForwardFunction
+# ociForwardFunction - Event and Log integration for Oracle Cloud
 
-ociForwardFunction is a collection of functions used to integrate Oracle Cloud - OCI - with third party solutions. The primary initial use case is (has been) integrating Oracle Cloud logging and CNCF compatible Cloud Events. For the creation of the integrations OCI functions are used and written primarily in Python. 
+ociForwardFunction is a collection of functions used to integrate Oracle Cloud - OCI - with third party solutions. The primary initial use case is (has been) integrating Oracle Cloud logging and CNCF compatible Oracle Cloud Events. For the creation of the integrations OCI functions are used and written primarily in Python to leverage the concept of clud native serverless as much as possible and to ensure an ease of deployment and use for users. 
+
+It is expected that the person implementing one or mulitple of the functions provided by the ociForwardFunction has a basic understanding of OCI, OCI events and the target(s) that are intended for this integration.  
 
 ## Integrations
 
