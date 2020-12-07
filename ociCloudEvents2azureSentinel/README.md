@@ -7,6 +7,8 @@ The deployment of this specific function is a standard deployment which is descr
 ## Configuration
 To be able to configure the integration you will need some information from Azure. For the integration to work the "workspace ID" and the "primary Key" (or secondary key) are needed. Those can be retreived via the "Agent Management" settings in your Log Analytics Workspace in Micrsoft Azure. The below screenshot shows where the information can be retrieved. 
 
+To trigger the function within OCI to ensure the Cloud Event is send to the target requires the configuration of an OCI Event Rule and define this trigger as the specific action to be taken for matching events. This will allow you to only send the events you want to the function and by doing send it to the target of the integration. More information on the configuration of event rules and and actions can be located in the Oracle Cloud documentation and in the main documentation section for this project. 
+
 ![](../doc/Azure_sentinel_Oracle_Cloud_2.png)
 *Aquire Azure details for Oracle Cloud Configuration*
 
