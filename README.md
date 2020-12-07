@@ -1,8 +1,8 @@
 # ociForwardFunction
 
-ociForwardFunction is a collection of functions used to integrate Oracle CLoud - OCI - with third party solutions. The primary initial use case is (has been) integrating Oracle Cloud logging and CNCF compatible Cloud Events. For the creation of the integrations OCI functions are used and written primarily in Python. 
+ociForwardFunction is a collection of functions used to integrate Oracle Cloud - OCI - with third party solutions. The primary initial use case is (has been) integrating Oracle Cloud logging and CNCF compatible Cloud Events. For the creation of the integrations OCI functions are used and written primarily in Python. 
 
-## integrations
+## Integrations
 
 ### OCI Cloud Events towards MS Azure Sentinel
 Sending OCI Cloud Events to Micorsoft Azure Sentinel for inclusion in a Azure Sentinel log workspace. This can be achieved by using the ociCloudEvents2azureSentinel functionalitly. [Documentation](ociCloudEvents2azureSentinel/README.md)
