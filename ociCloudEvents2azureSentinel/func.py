@@ -32,7 +32,6 @@ def handler(ctx, data: io.BytesIO = None):
     try:
         receivedCloudEvent = json.loads(data.getvalue())
     except (Exception, ValueError) as ex:
-#        print(str(ex))
         funcFailure = True
         funcFailureMessage = ('ERROR - No OCI cloud event from OCI send into the function')
 
