@@ -5,7 +5,7 @@ ociForwardFunction is a collection of functions used to integrate Oracle CLoud -
 ## integrations
 
 ### OCI Cloud Events towards MS Azure Sentinel
-Sending OCI Cloud Events to Micorsoft Azure Sentinel for inclusion in a Azure Sentinel log workspace. This can be achieved by using the ociCloudEvents2azureSentinel functionalitly.
+Sending OCI Cloud Events to Micorsoft Azure Sentinel for inclusion in a Azure Sentinel log workspace. This can be achieved by using the ociCloudEvents2azureSentinel functionalitly. [Documentation](ociCloudEvents2azureSentinel/README.md)
 
 *Tested = Yes, Operational = Yes*
 
