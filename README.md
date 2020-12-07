@@ -34,6 +34,8 @@ To ensure a basic understanding of how to configure / prepare OCI for function d
 
 ### Generic Event Configuration 
 
+### Generic Logging Configuration 
+
 ## Additional background information
 * [OCI serverless Functions](https://docs.cloud.oracle.com/en-us/iaas/Content/Functions/Concepts/functionsoverview.htm)
 * [OCI cloudevents](https://docs.cloud.oracle.com/en-us/iaas/Content/Events/Concepts/eventsoverview.htm)
