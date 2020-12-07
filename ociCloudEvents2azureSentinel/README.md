@@ -14,5 +14,11 @@ When data is send to Azure you can retrieve the data in your Azure workspace. It
 ![](../doc/Azure_sentinel_Oracle_Cloud_3.png)
 *Custom log with Oracle CLoud Events*
 
+Retrieving and viewing OCI Cloud Events from Oracle Cloud in an Azure workspace can be done by creating a query in Azure and/or using any of the native Azure ways of retrieving data stored in a specific workspace. The below screenshot shows a simple retrievale query. 
+
+![](../doc/Azure_sentinel_Oracle_Cloud_1.png)
+*Query azure for Oracle Cloud Events*
+
+
 ## Additional information
 * [Azure HTTP Data Collector API](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collector-api)
