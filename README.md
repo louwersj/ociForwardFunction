@@ -9,12 +9,12 @@ It is expected that the person implementing one or mulitple of the functions pro
 
 ## Integrations
 
-### Microsoft Azure Sentinel for OCI Cloud Events  
+### Microsoft Azure Sentinel - OCI Cloud Events  
 Sending OCI Cloud Events to Micorsoft Azure Sentinel for inclusion in a Azure Sentinel log workspace. This can be achieved by using the ociCloudEvents2azureSentinel functionalitly. [Documentation](ociCloudEvents2azureSentinel/README.md)
 
 *Tested = Yes, Operational = Yes*
 
-### Microsoft Azure Sentinel for OCI logging 
+### Microsoft Azure Sentinel - OCI logging 
 Sending OCI logging to Micorsoft Azure Sentinel for inclusion in a Azure Sentinel log workspace. This can be achieved by using the ociLogging2azureSentinel functionalitly.
 
 *Tested = No, Operational = No*
