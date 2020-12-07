@@ -14,6 +14,14 @@ Sending OCI logging to Micorsoft Azure Sentinel for inclusion in a Azure Sentine
 
 *Tested = No, Operational = No*
 
+## Deployment and configuration
+
+### Generic Function Deployment
+
+### Generic Function Configuration
+
+### Generic Event configuration 
+
 ## Additional background information
 * [OCI serverless Functions](https://docs.cloud.oracle.com/en-us/iaas/Content/Functions/Concepts/functionsoverview.htm)
 * [OCI cloudevents](https://docs.cloud.oracle.com/en-us/iaas/Content/Events/Concepts/eventsoverview.htm)
