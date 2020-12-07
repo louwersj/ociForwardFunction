@@ -1,0 +1,2 @@
+fdk
+google-cloud-logging
