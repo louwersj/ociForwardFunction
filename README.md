@@ -9,13 +9,19 @@ It is expected that the person implementing one or mulitple of the functions pro
 
 ## Integrations
 
+
+### Google Logging - OCI Cloud Events 
+Sending OCI logging to the Google Cloud Platform for inclusion in the Google Logging Service. This can be achieved by using the ociLogging2GcpLogging functionality.
+
+*Tested = No, Operational = No*
+
 ### Microsoft Azure Sentinel - OCI Cloud Events  
-Sending OCI Cloud Events to Micorsoft Azure Sentinel for inclusion in a Azure Sentinel log workspace. This can be achieved by using the ociCloudEvents2azureSentinel functionalitly. [Documentation](ociCloudEvents2azureSentinel/README.md)
+Sending OCI Cloud Events to Micorsoft Azure Sentinel for inclusion in a Azure Sentinel log workspace. This can be achieved by using the ociCloudEvents2azureSentinel functionality. [Documentation](ociCloudEvents2azureSentinel/README.md)
 
 *Tested = Yes, Operational = Yes*
 
 ### Microsoft Azure Sentinel - OCI logging 
-Sending OCI logging to Micorsoft Azure Sentinel for inclusion in a Azure Sentinel log workspace. This can be achieved by using the ociLogging2azureSentinel functionalitly.
+Sending OCI logging to Micorsoft Azure Sentinel for inclusion in a Azure Sentinel log workspace. This can be achieved by using the ociLogging2azureSentinel functionality.
 
 *Tested = No, Operational = No*
 
