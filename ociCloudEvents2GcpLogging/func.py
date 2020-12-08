@@ -4,7 +4,6 @@ import logging
 
 from fdk import response
 
-
 def handler(ctx, data: io.BytesIO = None):
     funcFailure = False
     funcFailureMessage = ('ERROR - Unknown error')
@@ -94,6 +93,35 @@ def handler(ctx, data: io.BytesIO = None):
     except:
         funcFailure = True
         funcFailureMessage = ('ERROR - Unable to get a value for config parameter keyfile_client_x509_cert_url')
+
+    # The Google Logging Client Libraries requires the service account key JSON file to be present on the operating system
+    # and need to be referenced as a file path under the operating system var GOOGLE_APPLICATION_CREDENTIALS . This means
+    # that it is required to build the JSON file on the fly based upon the information provided in the configuration of the
+    # Oracle Cloud function and that we ensure that the path where the file is created is placed in the mentioned OS env var
+
+    # Create a JSON structure for the Google Key File
+    googleKeyFileData = {
+        "type": keyFileType,
+        "project_id": keyFileProjectId,
+        "private_key_id": keyFilePrivateKeyId,
+        "private_key": keyFilePrivateKey,
+        "client_email": keyFileClientEmail,
+        "client_id": keyFileClientId,
+        "auth_uri": keyFileAuthUri,
+        "token_uri": keyFileTokenUri,
+        "auth_provider_x509_cert_url": keyFileAuthProvideCert,
+        "client_x509_cert_url": keyFileClientCert
+    }
+
+    # Create a local file for writing the google key file and write the JSON structure to it.
+    try:
+        with open(googleKeyFile, 'w') as outfile:
+        json.dump(googleKeyFileData, outfile)
+    except:
+        funcFailure = True
+        funcFailureMessage = ('ERROR - Unable to write Google Keyfile to local function storage')
+
+
 
     logging.getLogger().info("Inside Python Hello World function")
     return response.Response(
