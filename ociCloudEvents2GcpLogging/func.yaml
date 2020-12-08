@@ -3,4 +3,16 @@ name: ocicloudevents2gcplogging
 version: 0.0.1
 runtime: python
 entrypoint: /python/bin/fdk /function/func.py handler
-memory: 256
+memory: 128
+config:
+  keyfile_type: required
+  keyfile_project_id: required
+  keyfile_private_key_id: required
+  keyfile_private_key: required
+  keyfile_client_email: required
+  keyfile_client_id: required
+  keyfile_auth_uri: required
+  keyfile_token_uri: required
+  keyfile_auth_provider_x509_cert_url: required
+  keyfile_client_x509_cert_url: required
+
