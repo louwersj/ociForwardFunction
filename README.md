@@ -11,7 +11,7 @@ It is expected that the person implementing one or mulitple of the functions pro
 
 
 ### Google Logging - OCI Cloud Events 
-Sending OCI logging to the Google Cloud Platform for inclusion in the Google Logging Service. This can be achieved by using the ociLogging2GcpLogging functionality.
+Sending OCI Cloud Events to the Google Cloud Platform for inclusion in the Google Logging Service. This can be achieved by using the ociLogging2GcpLogging functionality.
 
 *Tested = No, Operational = No*
 
