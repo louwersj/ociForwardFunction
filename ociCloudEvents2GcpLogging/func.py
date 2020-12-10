@@ -1,10 +1,46 @@
 import io
 import json
 import logging
-
 from fdk import response
 
+
+
+def googleLoggerCall(logName, logData):
+    '''
+    Send the data that needs to be logged to the google logging service. In general the data we do want to send is in
+    all cases a JSON structure (dict), however, to be sure that in case the function is (mis-)used for another type of
+    integration we do check if the variable type of LogData is either a dict or string. Depending on this we will call
+    the google logging client in another fashion.
+    :param logName:
+    :param logData:
+    :return:
+    '''
+
+
+    # Instantiates a google logger client and define the log target to use to write the data. The name of the log is
+    # defined by the user in the form of a function variable when configuring the function in Oracle Cloud.
+    GoogleloggingClient = logging.Client()
+    logger = GoogleloggingClient.logger(logName)
+
+    # check for the type of var, we do expect the var to be a dict holding a JSON structure. However, in case it is a
+    # string value we do need to use log_text instead of using log_struct. This will make the logic more robust and able
+    # to cope with other data types than only JSON structures.
+    if type(logData) is str:
+        logger.log_text(logData)
+    elif type(logData) is dict:
+        logger.log_struct(logData)
+    else:
+        print("cannot determine what type of var this is")
+
+
+
 def handler(ctx, data: io.BytesIO = None):
+    '''
+
+    :param ctx:
+    :param data:
+    :return:
+    '''
     funcFailure = False
     funcFailureMessage = ('ERROR - Unknown error')
 
