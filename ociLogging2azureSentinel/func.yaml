@@ -4,3 +4,7 @@ version: 0.0.81
 runtime: python
 entrypoint: /python/bin/fdk /function/func.py handler
 memory: 128
+config:
+  custom_log_name: required
+  customer_id: required
+  shared_key: required
