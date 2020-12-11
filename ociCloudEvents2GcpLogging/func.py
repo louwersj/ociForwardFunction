@@ -1,6 +1,8 @@
 import io
 import json
 import logging
+import os
+from google.cloud import logging
 from fdk import response
 
 
@@ -44,15 +46,11 @@ def handler(ctx, data: io.BytesIO = None):
     funcFailure = False
     funcFailureMessage = ('ERROR - Unknown error')
 
-    name = "World"
     try:
-        body = json.loads(data.getvalue())
-        name = body.get("name")
+        receivedCloudEvent = json.loads(data.getvalue())
+
     except (Exception, ValueError) as ex:
         logging.getLogger().info('error parsing json payload: ' + str(ex))
-
-    # define the full path to the google key file (including the file name)
-    googleKeyFile = ("{}/google_key_file.json".format(os.path.dirname(os.path.realpath(__file__))))
 
     # Get all the function K/V configuration into functionConfig. The configuration of the function can be done within
     # Oracle Cloud. Can be done via the UI or in other ways. The configuration is customer / deployment specific. The
@@ -130,6 +128,13 @@ def handler(ctx, data: io.BytesIO = None):
         funcFailure = True
         funcFailureMessage = ('ERROR - Unable to get a value for config parameter keyfile_client_x509_cert_url')
 
+    # Try to extract the value for log_name from the function config. If failed we fail the function
+    try:
+        targetLogName = functionConfig.get('log_name')
+    except:
+        funcFailure = True
+        funcFailureMessage = ('ERROR - Unable to get a value for config parameter log_name')
+
     # The Google Logging Client Libraries requires the service account key JSON file to be present on the operating system
     # and need to be referenced as a file path under the operating system var GOOGLE_APPLICATION_CREDENTIALS . This means
     # that it is required to build the JSON file on the fly based upon the information provided in the configuration of the
@@ -140,7 +145,8 @@ def handler(ctx, data: io.BytesIO = None):
         "type": keyFileType,
         "project_id": keyFileProjectId,
         "private_key_id": keyFilePrivateKeyId,
-        "private_key": keyFilePrivateKey,
+        #"private_key": keyFilePrivateKey,
+        "private_key": (keyFilePrivateKey.replace("\\n","\n")),
         "client_email": keyFileClientEmail,
         "client_id": keyFileClientId,
         "auth_uri": keyFileAuthUri,
@@ -149,19 +155,38 @@ def handler(ctx, data: io.BytesIO = None):
         "client_x509_cert_url": keyFileClientCert
     }
 
+    # define the full path to the google key file (including the file name)
+    #googleKeyFile = ("{}/google_key_file.json".format(os.path.dirname(os.path.realpath(__file__))))
+    googleKeyFile = ("/tmp/google_key_file.json")
+
     # Create a local file for writing the google key file and write the JSON structure to it.
     try:
         with open(googleKeyFile, 'w') as outfile:
-        json.dump(googleKeyFileData, outfile)
+            json.dump(googleKeyFileData, outfile)
     except:
         funcFailure = True
         funcFailureMessage = ('ERROR - Unable to write Google Keyfile to local function storage')
 
+    # set the operating system environment variable to the location of the generated google key file.
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = googleKeyFile
+
+    googleLoggerCall(targetLogName, receivedCloudEvent)
 
 
-    logging.getLogger().info("Inside Python Hello World function")
-    return response.Response(
-        ctx, response_data=json.dumps(
-            {"message": "Hello {0}".format(name)}),
-        headers={"Content-Type": "application/json"}
-    )
+
+    # define the right response message to be send to the caller, taking into account the value of funcFailure. This
+    # value will be set to True in case a catched error has been encountered
+    if funcFailure:
+        return response.Response(
+            ctx, response_data=json.dumps(
+                {"response": "{0}".format(funcFailureMessage)
+                 }),
+            headers={"Content-Type": "application/json"}
+        )
+    else:
+        return response.Response(
+            ctx, response_data=json.dumps(
+                {"response": "OK"
+                 }),
+            headers={"Content-Type": "application/json"}
+        )

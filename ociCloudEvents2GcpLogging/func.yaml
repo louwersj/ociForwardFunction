@@ -1,19 +1,18 @@
 schema_version: 20180708
 name: ocicloudevents2gcplogging
-version: 0.0.1
+version: 0.0.15
 runtime: python
 entrypoint: /python/bin/fdk /function/func.py handler
 memory: 128
 config:
-  keyfile_type: service_account
-  keyfile_project_id: required
-  keyfile_private_key_id: required
-  keyfile_private_key: required
+  keyfile_auth_provider_x509_cert_url: https://www.googleapis.com/oauth2/v1/certs
+  keyfile_auth_uri: https://accounts.google.com/o/oauth2/auth
   keyfile_client_email: required
   keyfile_client_id: required
-  keyfile_auth_uri: https://accounts.google.com/o/oauth2/auth
-  keyfile_token_uri: https://oauth2.googleapis.com/token
-  keyfile_auth_provider_x509_cert_url: https://www.googleapis.com/oauth2/v1/certs
   keyfile_client_x509_cert_url: required
-  log_name : someLogName
-
+  keyfile_private_key: required
+  keyfile_private_key_id: 075818ba1fca6c0926b15fe0bc0d262be583f149
+  keyfile_project_id: required
+  keyfile_token_uri: https://oauth2.googleapis.com/token
+  keyfile_type: service_account
+  log_name: someLogName
