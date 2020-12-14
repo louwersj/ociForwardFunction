@@ -31,8 +31,11 @@ present to make the configuration more smooth.
 ...............
 
 ## Viewing OCI events in Google Cloud Platform
-.....................
+Viewing and/or analyzing the events send from Oracle Cloud in "logging" in the Google Cloud Platform can be 
+done with the standard tools available in Google Cloud.
 
+![](../doc/GCP_Logging_Oracle_Cloud_3.png)
+*Viewing Oracle Cloud Events in Google Cloud Platform*
 
 ## Additional information
-* [Azure HTTP Data Collector API](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collector-api)
+* [Google Cloud Logging](https://cloud.google.com/logging/docs)
